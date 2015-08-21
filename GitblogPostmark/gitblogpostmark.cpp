@@ -1,6 +1,8 @@
 #include "gitblogpostmark.h"
 #include "qmessagebox.h"
 #include "qtextstream.h"
+#include "qfiledialog.h"
+#include "qdatetime.h"
 
 GitblogPostmark::GitblogPostmark(QWidget *parent)
 	: QMainWindow(parent)
@@ -8,10 +10,18 @@ GitblogPostmark::GitblogPostmark(QWidget *parent)
 	ui.setupUi(this);
 	acd = NULL;
 	connect(ui.OkButton, SIGNAL(pressed()), this, SLOT(GetData()));
-	connect(ui.addCategory, SIGNAL(pressed()), this, SLOT(ShowACDialog()));
 
+	//connect(ui.authorEdit, SIGNAL(PressedEnter()), this, SLOT(GetData()));
+	//connect(ui.titleEdit, SIGNAL(PressedEnter()), this, SLOT(GetData()));
+	//connect(ui.tagsEdit, SIGNAL(PressedEnter()), this, SLOT(GetData()));
+
+	connect(ui.summaryEdit, SIGNAL(PressedEnter()), this, SLOT(GetData()));
+	connect(ui.addCategory, SIGNAL(pressed()), this, SLOT(ShowACDialog()));
+	connect(ui.choseFileButton, SIGNAL(pressed()), this, SLOT(ChoseFile()));
+	connect(ui.setDefaultDir, SIGNAL(pressed()), this, SLOT(SetDefaultFilePath()));
 
 	InitCategory();
+	InitFilePath();
 	ui.dateEdit->setDate(QDate::currentDate());
 	ui.dateEdit->setCurrentSectionIndex(2);
 	ui.statusCombo->addItem("publish");
@@ -66,7 +76,7 @@ void GitblogPostmark::InitCategory()
 	QFile file("categories.txt");
 	if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
 	{
-		QMessageBox::information(NULL, "Error!", "Can't open the file!");
+		QMessageBox::information(NULL, "Error!", "There is no categories file!");
 	}
 	QTextStream read(&file);
 	QString line;
@@ -101,4 +111,36 @@ void GitblogPostmark::ShowACDialog()
 	acd = new AddCategoryDialog();
 	acd->show();
 	connect(acd, SIGNAL(CategoryName(QString)), this, SLOT(AddCategory(QString)));
+}
+void GitblogPostmark::InitFilePath()
+{
+	QFile file("config.txt");
+	if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+	{
+		QMessageBox::information(NULL, "Error!", "Can not open config file!");
+	}
+	QTextStream read(&file);
+	filePath = read.readLine();
+	file.close();
+	QString fileName = QDateTime::currentDateTime().toString("yyyy-MM-dd-h-m");
+	filePath += fileName + ".md";
+	ui.filePathBrowser->setText(filePath);
+	
+}
+
+void GitblogPostmark::ChoseFile()
+{
+	filePath = QFileDialog::getOpenFileName();
+	ui.filePathBrowser->setText(filePath);
+}
+
+void GitblogPostmark::SetDefaultFilePath()
+{
+	QFile file("config.txt");
+	file.open(QIODevice::WriteOnly | QIODevice::Text);
+	QTextStream write(&file);
+	QString defaultDirectory = QFileDialog::getExistingDirectory();
+	defaultDirectory += "/";
+	write << defaultDirectory;
+	file.close();
 }

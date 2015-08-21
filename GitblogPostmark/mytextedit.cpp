@@ -20,6 +20,10 @@ bool MyTextEdit::event(QEvent *e)
                 next->setFocus();
             return true;
         }
+		if (keyEvent->key() == Qt::Key_Enter)
+		{
+			emit PressedEnter();
+		}
     }
     return QWidget::event(e);
 }

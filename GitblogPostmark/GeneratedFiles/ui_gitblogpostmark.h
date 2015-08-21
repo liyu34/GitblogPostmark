@@ -18,9 +18,8 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QWidget>
 #include <mytextedit.h>
 
@@ -46,8 +45,10 @@ public:
     QDateEdit *dateEdit;
     QPushButton *addCategory;
     QPushButton *OkButton;
-    QMenuBar *menuBar;
-    QStatusBar *statusBar;
+    QTextBrowser *filePathBrowser;
+    QPushButton *choseFileButton;
+    QLabel *label_8;
+    QPushButton *setDefaultDir;
 
     void setupUi(QMainWindow *GitblogPostmarkClass)
     {
@@ -58,60 +59,65 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         authorEdit = new MyTextEdit(centralWidget);
         authorEdit->setObjectName(QStringLiteral("authorEdit"));
-        authorEdit->setGeometry(QRect(140, 20, 431, 31));
+        authorEdit->setGeometry(QRect(140, 90, 431, 31));
         titleEdit = new MyTextEdit(centralWidget);
         titleEdit->setObjectName(QStringLiteral("titleEdit"));
-        titleEdit->setGeometry(QRect(140, 70, 431, 31));
+        titleEdit->setGeometry(QRect(140, 140, 431, 31));
         tagsEdit = new MyTextEdit(centralWidget);
         tagsEdit->setObjectName(QStringLiteral("tagsEdit"));
-        tagsEdit->setGeometry(QRect(140, 120, 431, 31));
+        tagsEdit->setGeometry(QRect(140, 190, 431, 31));
         summaryEdit = new MyTextEdit(centralWidget);
         summaryEdit->setObjectName(QStringLiteral("summaryEdit"));
-        summaryEdit->setGeometry(QRect(140, 270, 431, 71));
+        summaryEdit->setGeometry(QRect(140, 340, 431, 71));
         statusCombo = new QComboBox(centralWidget);
         statusCombo->setObjectName(QStringLiteral("statusCombo"));
-        statusCombo->setGeometry(QRect(140, 170, 171, 31));
+        statusCombo->setGeometry(QRect(140, 240, 171, 31));
         categoryCombo = new QComboBox(centralWidget);
         categoryCombo->setObjectName(QStringLiteral("categoryCombo"));
-        categoryCombo->setGeometry(QRect(140, 220, 171, 31));
+        categoryCombo->setGeometry(QRect(140, 290, 171, 31));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(30, 20, 91, 31));
+        label->setGeometry(QRect(30, 90, 91, 31));
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(30, 70, 91, 31));
+        label_2->setGeometry(QRect(30, 140, 91, 31));
         label_3 = new QLabel(centralWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(30, 120, 91, 31));
+        label_3->setGeometry(QRect(30, 190, 91, 31));
         label_4 = new QLabel(centralWidget);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(30, 170, 91, 31));
+        label_4->setGeometry(QRect(30, 240, 91, 31));
         label_5 = new QLabel(centralWidget);
         label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setGeometry(QRect(30, 220, 91, 31));
+        label_5->setGeometry(QRect(30, 290, 91, 31));
         label_6 = new QLabel(centralWidget);
         label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setGeometry(QRect(30, 290, 91, 31));
+        label_6->setGeometry(QRect(30, 360, 91, 31));
         label_7 = new QLabel(centralWidget);
         label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setGeometry(QRect(360, 170, 91, 31));
+        label_7->setGeometry(QRect(360, 240, 91, 31));
         dateEdit = new QDateEdit(centralWidget);
         dateEdit->setObjectName(QStringLiteral("dateEdit"));
-        dateEdit->setGeometry(QRect(460, 170, 111, 31));
+        dateEdit->setGeometry(QRect(460, 240, 111, 31));
         addCategory = new QPushButton(centralWidget);
         addCategory->setObjectName(QStringLiteral("addCategory"));
-        addCategory->setGeometry(QRect(360, 220, 211, 31));
+        addCategory->setGeometry(QRect(360, 290, 211, 31));
         OkButton = new QPushButton(centralWidget);
         OkButton->setObjectName(QStringLiteral("OkButton"));
-        OkButton->setGeometry(QRect(250, 370, 111, 31));
+        OkButton->setGeometry(QRect(460, 420, 111, 31));
+        filePathBrowser = new QTextBrowser(centralWidget);
+        filePathBrowser->setObjectName(QStringLiteral("filePathBrowser"));
+        filePathBrowser->setGeometry(QRect(140, 30, 291, 31));
+        choseFileButton = new QPushButton(centralWidget);
+        choseFileButton->setObjectName(QStringLiteral("choseFileButton"));
+        choseFileButton->setGeometry(QRect(460, 40, 111, 31));
+        label_8 = new QLabel(centralWidget);
+        label_8->setObjectName(QStringLiteral("label_8"));
+        label_8->setGeometry(QRect(30, 30, 91, 31));
+        setDefaultDir = new QPushButton(centralWidget);
+        setDefaultDir->setObjectName(QStringLiteral("setDefaultDir"));
+        setDefaultDir->setGeometry(QRect(460, 10, 111, 31));
         GitblogPostmarkClass->setCentralWidget(centralWidget);
-        menuBar = new QMenuBar(GitblogPostmarkClass);
-        menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 600, 23));
-        GitblogPostmarkClass->setMenuBar(menuBar);
-        statusBar = new QStatusBar(GitblogPostmarkClass);
-        statusBar->setObjectName(QStringLiteral("statusBar"));
-        GitblogPostmarkClass->setStatusBar(statusBar);
 
         retranslateUi(GitblogPostmarkClass);
 
@@ -129,7 +135,10 @@ public:
         label_6->setText(QApplication::translate("GitblogPostmarkClass", "<html><head/><body><p><span style=\" font-size:12pt;\">\350\257\267\350\276\223\345\205\245\346\200\273\347\273\223</span></p></body></html>", 0));
         label_7->setText(QApplication::translate("GitblogPostmarkClass", "<html><head/><body><p><span style=\" font-size:12pt;\">\350\257\267\351\200\211\346\213\251\346\227\266\351\227\264</span></p></body></html>", 0));
         addCategory->setText(QApplication::translate("GitblogPostmarkClass", "\346\267\273\345\212\240\346\226\207\351\233\206", 0));
-        OkButton->setText(QApplication::translate("GitblogPostmarkClass", "OK", 0));
+        OkButton->setText(QApplication::translate("GitblogPostmarkClass", "\347\241\256\345\256\232", 0));
+        choseFileButton->setText(QApplication::translate("GitblogPostmarkClass", "\351\200\211\346\213\251\346\226\207\344\273\266", 0));
+        label_8->setText(QApplication::translate("GitblogPostmarkClass", "<html><head/><body><p><span style=\" font-size:12pt;\">\346\226\207\344\273\266\347\233\256\345\275\225</span></p></body></html>", 0));
+        setDefaultDir->setText(QApplication::translate("GitblogPostmarkClass", "\350\256\276\347\275\256\351\273\230\350\256\244\346\226\207\344\273\266\347\233\256\345\275\225", 0));
     } // retranslateUi
 
 };

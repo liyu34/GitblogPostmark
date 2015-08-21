@@ -23,10 +23,10 @@
     </rect>
    </property>
    <property name="text">
-    <string>PushButton</string>
+    <string>OK</string>
    </property>
   </widget>
-  <widget class="QTextEdit" name="textEdit">
+  <widget class="MyTextEdit" name="textEdit">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -37,6 +37,13 @@
    </property>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MyTextEdit</class>
+   <extends>QTextEdit</extends>
+   <header location="global">mytextedit.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

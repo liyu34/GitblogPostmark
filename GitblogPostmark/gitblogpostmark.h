@@ -17,14 +17,20 @@ public:
 	~GitblogPostmark();
 private:
 	void InitCategory();
+	void InitFilePath();
+
 private:
 	Ui::GitblogPostmarkClass ui;
 	AddCategoryDialog *acd;
+	QString filePath;
 
 private slots:
 	void GetData();
 	void AddCategory(QString cate);
 	void ShowACDialog();
+	void ChoseFile();
+	void SetDefaultFilePath();
+
 signals:
 	void SendSettings(QString settings);
 };

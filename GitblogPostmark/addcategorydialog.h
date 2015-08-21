@@ -3,6 +3,7 @@
 
 #include "qdialog.h"
 #include "qstring.h"
+#include "mytextedit.h"
 
 namespace Ui {
 class AddCategoryDialog;

@@ -7,6 +7,8 @@ AddCategoryDialog::AddCategoryDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(ui->pushButton,SIGNAL(pressed()),this,SLOT(GetName()));
+	connect(ui->textEdit, SIGNAL(PressedEnter()), this, SLOT(GetName()));
+	ui->textEdit->setFocus();
 }
 
 AddCategoryDialog::~AddCategoryDialog()

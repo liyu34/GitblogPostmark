@@ -62,6 +62,12 @@
     <ClCompile Include="GeneratedFiles\Release\moc_addcategorydialog.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_mytextedit.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_mytextedit.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="gitblogpostmark.h">
@@ -79,13 +85,13 @@
     <CustomBuild Include="addcategorydialog.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="mytextedit.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_gitblogpostmark.h">
       <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="mytextedit.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_addcategorydialog.h">
       <Filter>Generated Files</Filter>

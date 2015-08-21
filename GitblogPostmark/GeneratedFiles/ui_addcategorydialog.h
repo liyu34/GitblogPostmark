@@ -16,7 +16,7 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QTextEdit>
+#include <mytextedit.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -24,7 +24,7 @@ class Ui_AddCategoryDialog
 {
 public:
     QPushButton *pushButton;
-    QTextEdit *textEdit;
+    MyTextEdit *textEdit;
 
     void setupUi(QDialog *AddCategoryDialog)
     {
@@ -34,7 +34,7 @@ public:
         pushButton = new QPushButton(AddCategoryDialog);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(120, 50, 75, 23));
-        textEdit = new QTextEdit(AddCategoryDialog);
+        textEdit = new MyTextEdit(AddCategoryDialog);
         textEdit->setObjectName(QStringLiteral("textEdit"));
         textEdit->setGeometry(QRect(20, 10, 281, 31));
 
@@ -46,7 +46,7 @@ public:
     void retranslateUi(QDialog *AddCategoryDialog)
     {
         AddCategoryDialog->setWindowTitle(QApplication::translate("AddCategoryDialog", "Dialog", 0));
-        pushButton->setText(QApplication::translate("AddCategoryDialog", "PushButton", 0));
+        pushButton->setText(QApplication::translate("AddCategoryDialog", "OK", 0));
     } // retranslateUi
 
 };

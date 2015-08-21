@@ -6,6 +6,7 @@
 
 class MyTextEdit : public QTextEdit
 {
+	Q_OBJECT
 public:
     MyTextEdit(QWidget *parent=0);
 
@@ -14,6 +15,8 @@ private:
     bool event(QEvent *e);
 private:
     MyTextEdit *next;
+signals:
+	void PressedEnter();
 
 };
 
