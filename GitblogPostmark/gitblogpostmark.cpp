@@ -69,8 +69,13 @@ void GitblogPostmark::GetData()
 	settings += "summary:" + summary + "\n";
 	settings += "-->\n";
 
+	filePath = ui.filePathBrowser->toPlainText();
 	QFile file(filePath);
-	file.open(QIODevice::ReadWrite | QIODevice::Text);
+	if (!file.open(QIODevice::ReadWrite | QIODevice::Text))
+	{
+		QMessageBox::information(NULL, "Error!", "The path isn't exist!Please reset the default path!");
+		return;
+	}
 	QTextStream write(&file);
 	write.seek(0);
 	write << settings;
@@ -143,10 +148,12 @@ void GitblogPostmark::InitFilePath()
 		read << dir;
 	}
 	file.close();
-	dir += "/";
+
+	if (!(dir.at(dir.length() - 1) == "/"))
+		dir += "/";
 
 	QString name = QDateTime::currentDateTime().toString("yyyy-MM-dd-h-m");
-	filePath += dir + name + ".md";
+	filePath = dir + name + ".md";
 	ui.filePathBrowser->setText(filePath);
 	
 }
@@ -163,7 +170,10 @@ void GitblogPostmark::SetDefaultFilePath()
 	file.open(QIODevice::WriteOnly | QIODevice::Text);
 	QTextStream write(&file);
 	QString defaultDirectory = QFileDialog::getExistingDirectory();
-	defaultDirectory += "/";
+	if (!(defaultDirectory.at(defaultDirectory.length() - 1) == "/"))
+		defaultDirectory += "/";
 	write << defaultDirectory;
 	file.close();
+	ui.filePathBrowser->document()->clear();
+	InitFilePath();
 }

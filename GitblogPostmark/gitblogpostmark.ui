@@ -210,6 +210,9 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
    </widget>
    <widget class="QPushButton" name="choseFileButton">
     <property name="geometry">

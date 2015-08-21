@@ -108,6 +108,7 @@ public:
         filePathBrowser = new QTextBrowser(centralWidget);
         filePathBrowser->setObjectName(QStringLiteral("filePathBrowser"));
         filePathBrowser->setGeometry(QRect(140, 30, 291, 31));
+        filePathBrowser->setReadOnly(false);
         choseFileButton = new QPushButton(centralWidget);
         choseFileButton->setObjectName(QStringLiteral("choseFileButton"));
         choseFileButton->setGeometry(QRect(460, 40, 111, 31));
