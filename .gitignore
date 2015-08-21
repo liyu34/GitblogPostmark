@@ -1,0 +1,7 @@
+*.sdf
+*.suo
+*.opensdf
+GitblogPostmark/Debug/
+GitblogPostmark/Release/
+GitblogPostmark/GeneratedFiles/Debug/
+GitblogPostmark/GeneratedFiles/Release/
