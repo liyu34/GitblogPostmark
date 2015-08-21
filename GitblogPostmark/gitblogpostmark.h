@@ -3,6 +3,10 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_gitblogpostmark.h"
+#include "addcategorydialog.h"
+#include "qstring.h"
+#include "qfile.h"
+#include "mytextedit.h"
 
 class GitblogPostmark : public QMainWindow
 {
@@ -11,9 +15,18 @@ class GitblogPostmark : public QMainWindow
 public:
 	GitblogPostmark(QWidget *parent = 0);
 	~GitblogPostmark();
-
+private:
+	void InitCategory();
 private:
 	Ui::GitblogPostmarkClass ui;
+	AddCategoryDialog *acd;
+
+private slots:
+	void GetData();
+	void AddCategory(QString cate);
+	void ShowACDialog();
+signals:
+	void SendSettings(QString settings);
 };
 
 #endif // GITBLOGPOSTMARK_H
