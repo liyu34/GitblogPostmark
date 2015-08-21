@@ -30,9 +30,6 @@ private slots:
 	void ShowACDialog();
 	void ChoseFile();
 	void SetDefaultFilePath();
-
-signals:
-	void SendSettings(QString settings);
 };
 
 #endif // GITBLOGPOSTMARK_H

@@ -12,6 +12,7 @@ bool MyTextEdit::event(QEvent *e)
     if (e->type() == QEvent::KeyPress)
     {
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(e);
+		int k = keyEvent->key();
         if (keyEvent->key() == Qt::Key_Tab)
         {
             // 处理Tab鍵
@@ -20,7 +21,7 @@ bool MyTextEdit::event(QEvent *e)
                 next->setFocus();
             return true;
         }
-		if (keyEvent->key() == Qt::Key_Enter)
+		if (keyEvent->key() == Qt::Key_Enter || keyEvent->key() == Qt::Key_Return)
 		{
 			emit PressedEnter();
 		}

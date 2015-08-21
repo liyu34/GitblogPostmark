@@ -68,7 +68,14 @@ void GitblogPostmark::GetData()
 	settings += "summary:" + summary + "\n";
 	settings += "-->\n";
 
-	emit SendSettings(settings);
+	QFile file(filePath);
+	file.open(QIODevice::ReadWrite | QIODevice::Text);
+	QTextStream write(&file);
+	write.seek(0);
+	write << settings;
+	file.close();
+
+	this->close();
 }
 
 void GitblogPostmark::InitCategory()
