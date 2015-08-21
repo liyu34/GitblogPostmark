@@ -3,6 +3,7 @@
 #include "qtextstream.h"
 #include "qfiledialog.h"
 #include "qdatetime.h"
+#include "qdir.h"
 
 GitblogPostmark::GitblogPostmark(QWidget *parent)
 	: QMainWindow(parent)
@@ -81,7 +82,7 @@ void GitblogPostmark::GetData()
 void GitblogPostmark::InitCategory()
 {
 	QFile file("categories.txt");
-	if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+	if (!file.open(QIODevice::ReadWrite | QIODevice::Text))
 	{
 		QMessageBox::information(NULL, "Error!", "There is no categories file!");
 	}
@@ -89,6 +90,11 @@ void GitblogPostmark::InitCategory()
 	QString line;
 	line = read.readLine();
 	line = line.trimmed();
+	if (line == "")
+	{
+		line = "Gitblog";
+		read << line;
+	}
 	while (line != "")
 	{
 		ui.categoryCombo->addItem(line);
@@ -103,7 +109,7 @@ void GitblogPostmark::AddCategory(QString cate)
 	QFile file("categories.txt");
 	if (!file.open(QIODevice::ReadWrite | QIODevice::Text))
 	{
-		QMessageBox::information(NULL, "Error!", "Can't open the file!");
+		QMessageBox::information(NULL, "Error!", "Can't open the category file!");
 	}
 	QTextStream write(&file);
 	write.readAll();
@@ -119,18 +125,28 @@ void GitblogPostmark::ShowACDialog()
 	acd->show();
 	connect(acd, SIGNAL(CategoryName(QString)), this, SLOT(AddCategory(QString)));
 }
+
 void GitblogPostmark::InitFilePath()
 {
 	QFile file("config.txt");
-	if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+	QString dir = "";
+	if (!file.open(QIODevice::ReadWrite | QIODevice::Text))
 	{
-		QMessageBox::information(NULL, "Error!", "Can not open config file!");
+		QMessageBox::information(NULL, "Error!", "Can't open the category file!");
 	}
+
 	QTextStream read(&file);
-	filePath = read.readLine();
+	dir = read.readLine();
+	if (dir == "")
+	{
+		dir = QDir::currentPath();
+		read << dir;
+	}
 	file.close();
-	QString fileName = QDateTime::currentDateTime().toString("yyyy-MM-dd-h-m");
-	filePath += fileName + ".md";
+	dir += "/";
+
+	QString name = QDateTime::currentDateTime().toString("yyyy-MM-dd-h-m");
+	filePath += dir + name + ".md";
 	ui.filePathBrowser->setText(filePath);
 	
 }
