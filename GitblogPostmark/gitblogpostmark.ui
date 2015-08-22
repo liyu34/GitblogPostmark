@@ -23,6 +23,9 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>IBeamCursor</cursorShape>
+    </property>
    </widget>
    <widget class="MyTextEdit" name="titleEdit">
     <property name="geometry">
@@ -32,6 +35,9 @@
       <width>431</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>IBeamCursor</cursorShape>
     </property>
    </widget>
    <widget class="MyTextEdit" name="tagsEdit">
@@ -43,6 +49,9 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>IBeamCursor</cursorShape>
+    </property>
    </widget>
    <widget class="MyTextEdit" name="summaryEdit">
     <property name="geometry">
@@ -52,6 +61,14 @@
       <width>431</width>
       <height>71</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+     </font>
+    </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>IBeamCursor</cursorShape>
     </property>
    </widget>
    <widget class="QComboBox" name="statusCombo">
@@ -174,6 +191,9 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="displayFormat">
+     <string>yyyy-MM-dd</string>
+    </property>
    </widget>
    <widget class="QPushButton" name="addCategory">
     <property name="geometry">
@@ -207,8 +227,20 @@
       <x>140</x>
       <y>30</y>
       <width>291</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>IBeamCursor</cursorShape>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="tabChangesFocus">
+     <bool>false</bool>
+    </property>
+    <property name="undoRedoEnabled">
+     <bool>true</bool>
     </property>
     <property name="readOnly">
      <bool>false</bool>

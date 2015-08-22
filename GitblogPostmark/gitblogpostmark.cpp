@@ -170,10 +170,13 @@ void GitblogPostmark::SetDefaultFilePath()
 	file.open(QIODevice::WriteOnly | QIODevice::Text);
 	QTextStream write(&file);
 	QString defaultDirectory = QFileDialog::getExistingDirectory();
-	if (!(defaultDirectory.at(defaultDirectory.length() - 1) == "/"))
-		defaultDirectory += "/";
-	write << defaultDirectory;
-	file.close();
-	ui.filePathBrowser->document()->clear();
-	InitFilePath();
+	if (defaultDirectory != "")
+	{
+		if (!(defaultDirectory.at(defaultDirectory.length() - 1) == "/"))
+			defaultDirectory += "/";
+		write << defaultDirectory;
+		file.close();
+		ui.filePathBrowser->document()->clear();
+		InitFilePath();
+	}
 }
