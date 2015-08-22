@@ -7,3 +7,6 @@ GitblogPostmark/GeneratedFiles/Debug/
 GitblogPostmark/GeneratedFiles/Release/
 Win32/
 x64/
+*.vcxproj
+*.user
+*.sln
