@@ -101,7 +101,7 @@ void GitblogPostmark::InitCategory()
 	if (line == "")
 	{
 		line = "Gitblog";
-		read << line;
+		read << line << '\n';
 	}
 	while (line != "")
 	{
@@ -115,12 +115,11 @@ void GitblogPostmark::InitCategory()
 void GitblogPostmark::AddCategory(QString cate)
 {
 	QFile file("categories.txt");
-	if (!file.open(QIODevice::ReadWrite | QIODevice::Text))
+	if (!file.open(QIODevice::Append | QIODevice::Text))
 	{
 		QMessageBox::information(NULL, "Error!", "Can't open the category file!");
 	}
 	QTextStream write(&file);
-	write.readAll();
 	write << cate << '\n';
 	file.close();
 	ui.categoryCombo->clear();
