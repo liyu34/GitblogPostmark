@@ -50,6 +50,8 @@ void GitblogPostmark::GetData()
 	QString status;
 	QString summary;
 	QString date;
+	
+
 
 	author = ui.authorEdit->document()->toPlainText();
 	title = ui.titleEdit->document()->toPlainText();
@@ -77,6 +79,7 @@ void GitblogPostmark::GetData()
 		return;
 	}
 	QTextStream write(&file);
+	settings += write.readAll();
 	write.seek(0);
 	write << settings;
 	file.close();
@@ -118,7 +121,7 @@ void GitblogPostmark::AddCategory(QString cate)
 	}
 	QTextStream write(&file);
 	write.readAll();
-	write << cate << endl;
+	write << cate << '\n';
 	file.close();
 	ui.categoryCombo->clear();
 	InitCategory();
